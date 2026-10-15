@@ -1,0 +1,26 @@
+# environment
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+# secret
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# data/model
+data/raw/
+*.parquet
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.gguf
+*.onnx
+# system/editor
+.DS_Store
+.idea/
+.vscode/
