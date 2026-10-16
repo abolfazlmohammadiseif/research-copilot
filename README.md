@@ -1,13 +1,13 @@
 # research-copilot
 
-A Q&A assistant for research papers, featuring source citations and an "I don't know" capability.
+A question-answering assistant over research papers, with source citations and the ability to say "I don't know".
 
-**Status:** Under development (Day 1 of 45).
+**Status:** under construction (day 2 of 45).
 
-## Implementation
-Coming soon (Day 2).
+## Run
+See the Quickstart section below once available.
 
-## Documentation
+## Docs
 - [Charter](docs/charter.md)
 - [Journal](docs/journal.md)
 
