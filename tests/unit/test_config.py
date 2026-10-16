@@ -57,4 +57,3 @@ def test_package_imports_from_outside_repo(tmp_path):
     )
 
     assert result.returncode == 0, result.stderr
-
