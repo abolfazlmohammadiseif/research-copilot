@@ -1,6 +1,5 @@
-from research_copilot.llm.fake import FakeLLM
-
 from research_copilot.llm.client import Message
+from research_copilot.llm.fake import FakeLLM
 
 
 def test_fake_returns_replies_in_order_then_repeats_last():
