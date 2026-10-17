@@ -2,9 +2,9 @@ import os
 
 import httpx
 import pytest
-from research_copilot.llm.fake import FakeLLM
 
 from research_copilot.llm.client import ChatResult, LLMClient, Message, OpenAICompatClient
+from research_copilot.llm.fake import FakeLLM
 
 BASE_URL = os.environ.get("RC_LLM_BASE_URL", "http://localhost:11434/v1")
 MODEL = os.environ.get("RC_LLM_MODEL", "llama3.1")
