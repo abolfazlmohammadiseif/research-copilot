@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     data_dir: Path = Path("data")
     llm_timeout: float = Field(default=60.0, gt=0)
     embed_timeout: float = Field(default=30.0, gt=0)
+    llm_connect_timeout: float = Field(default=5.0, gt=0)
 
 
 @lru_cache(maxsize=1)
