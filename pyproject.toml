@@ -8,11 +8,13 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "httpx>=0.28.1",
     "pydantic-settings>=2.16.0",
 ]
 
 [project.scripts]
 research-copilot = "research_copilot:main"
+rc = "research_copilot.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
@@ -27,6 +29,7 @@ dev = [
 ]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["integration: needs a running Ollama server"]
 
 [tool.ruff]
 line-length = 100

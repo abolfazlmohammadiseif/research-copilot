@@ -27,3 +27,6 @@ check: guard lint type test
 
 run:
 	uv run research-copilot
+
+test-int:
+	uv run pytest -m integration
