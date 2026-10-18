@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     llm_timeout: float = Field(default=60.0, gt=0)
     embed_timeout: float = Field(default=30.0, gt=0)
     llm_connect_timeout: float = Field(default=5.0, gt=0)
+    llm_context_window: int = Field(default=4096, gt=0)
+    prompts_dir: Path = Path("prompts")
 
 
 @lru_cache(maxsize=1)
