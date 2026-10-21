@@ -52,10 +52,13 @@ class LLMClient(Protocol):
         temperature: float = 0.0,
         top_p: float = 1.0,
         max_tokens: int | None = None,
+        json_schema: dict[str, Any] | None = None,
     ) -> ChatResult: ...
 
 
 class OpenAICompatClient:
+    _path = "chat/completions"
+
     def __init__(
         self,
         base_url: str,
@@ -86,6 +89,7 @@ class OpenAICompatClient:
         temperature: float = 0.0,
         top_p: float = 1.0,
         max_tokens: int | None = None,
+        json_schema: dict[str, Any] | None = None,
     ) -> ChatResult:
         payload: dict[str, Any] = {
             "model": self._model,
@@ -96,6 +100,11 @@ class OpenAICompatClient:
         }
         if max_tokens is not None:
             payload["max_tokens"] = max_tokens
+        if json_schema is not None:
+            payload["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {"name": "output", "schema": json_schema, "strict": True},
+            }
         data = call_with_retry(
             lambda: self._post(payload),
             self._retry,
@@ -105,7 +114,8 @@ class OpenAICompatClient:
 
     def _post(self, payload: dict[str, Any]) -> dict[str, Any]:
         try:
-            response = self._http.post("chat/completions", json=payload)
+            # response = self._http.post("chat/completions", json=payload)
+            response = self._http.post(self._path, json=payload)
         except (httpx.ConnectError, httpx.TimeoutException) as exc:
             raise LLMTransientError(f"{type(exc).__name__}: {exc}") from exc
         except httpx.HTTPError as exc:
